@@ -20,11 +20,19 @@ import { SkipNavContent } from '@reach/skip-nav';
 import Page from '@components/page';
 import ConfContent from '@components/index';
 import { META_DESCRIPTION } from '@lib/constants';
+import FrontendTracer from './tracing';
+import otel from "@opentelemetry/api"
+
+console.log('JESS was here yo');
+
+FrontendTracer("").then(() => {
+  otel.trace.getTracer("does this work").startSpan("poo").end()
+})
 
 export default function Conf() {
   const { query } = useRouter();
   const meta = {
-    title: 'Jess\'s Pretend Conference',
+    title: "Jess's Pretend Conference",
     description: META_DESCRIPTION
   };
   const ticketNumber = query.ticketNumber?.toString();
