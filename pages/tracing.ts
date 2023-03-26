@@ -29,8 +29,8 @@ const FrontendTracer = async (collectorString: string) => {
     resource
   });
 
-const { NEXT_PUBLIC_HONEYCOMB_API_KEY = '' } =
-typeof window !== 'undefined' ? (window as any).ENV : {};
+  const NEXT_PUBLIC_HONEYCOMB_API_KEY = process.env.NEXT_PUBLIC_HONEYCOMB_API_KEY;
+  console.log('API Key: ' + NEXT_PUBLIC_HONEYCOMB_API_KEY);
 
   provider.addSpanProcessor(
     new SimpleSpanProcessor(
